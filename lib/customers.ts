@@ -16,6 +16,7 @@ export interface Customer {
   email: string
   phone: string
   services: string[]
+  skills: string[]
   notes: string
   health: CustomerHealth
   consultant: string

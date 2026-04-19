@@ -64,7 +64,7 @@ export default function CustomerTable({ customers }: CustomerTableProps) {
                 backgroundColor: 'rgba(255,255,255,0.02)',
               }}
             >
-              {['KUND', 'BRANSCH', 'KONSULT', 'TJÄNSTER', 'ARVODE/MÅN', 'HÄLSA', 'STATUS'].map(
+              {['KUND', 'BRANSCH', 'KONSULT', 'TJÄNSTER', 'KOMPETENSER', 'ARVODE/MÅN', 'HÄLSA', 'STATUS'].map(
                 (col) => (
                   <th
                     key={col}
@@ -85,7 +85,7 @@ export default function CustomerTable({ customers }: CustomerTableProps) {
             {filtered.length === 0 && (
               <tr>
                 <td
-                  colSpan={7}
+                  colSpan={8}
                   className="px-4 py-12 text-center"
                   style={{ color: '#A0A0A0' }}
                 >
@@ -150,6 +150,32 @@ export default function CustomerTable({ customers }: CustomerTableProps) {
                           style={{ color: '#A0A0A0' }}
                         >
                           +{customer.services.length - 2}
+                        </span>
+                      )}
+                    </div>
+                  </td>
+                  <td className="px-4 py-3">
+                    <div className="flex flex-wrap gap-1">
+                      {(customer.skills ?? []).slice(0, 2).map((skill) => (
+                        <span
+                          key={skill}
+                          className="px-2 py-0.5 text-xs"
+                          style={{
+                            backgroundColor: 'rgba(160,160,160,0.1)',
+                            border: '1px solid rgba(160,160,160,0.25)',
+                            color: '#A0A0A0',
+                            letterSpacing: '0.05em',
+                          }}
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                      {(customer.skills ?? []).length > 2 && (
+                        <span
+                          className="px-2 py-0.5 text-xs"
+                          style={{ color: '#A0A0A0' }}
+                        >
+                          +{(customer.skills ?? []).length - 2}
                         </span>
                       )}
                     </div>
